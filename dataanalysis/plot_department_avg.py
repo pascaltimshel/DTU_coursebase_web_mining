@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from storage.static_storage import StaticStorage
 from dataanalysis.cal_avg import department_avg, course_avg, course_run_avg
 #from dataanalysis.cal_avg import course_avg
 
@@ -64,7 +65,19 @@ def department_all_years_avgs(department):
     return year_avgs
 
 
-def deparment_:
-    for department in list_all_departments():
+def get_deparment_timeseries_data():
+    department_timeseries_data = {}
+    storage = StaticStorage()
+    departments = storage.list_departments() # list all departments
+    for department in departments():
+        department_timeseries_data[department.code] = department_all_years_avgs(department) #saving avg list
+
+
+def main():
+    dep_avg_timeseries = get_deparment_timeseries_data()
+    print dep_avg_timeseries
+    
+if __name__ == "__main__":
+    main()
 
 #2008:2013
